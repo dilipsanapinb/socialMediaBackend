@@ -34,9 +34,10 @@ postRoute.get("/api/posts/:id", async (req, res) => {
 // add post
 
 postRoute.post("/api/posts", auth, async (req, res) => {
-  let { user, text, image, createdAt, likes, comments } = req.body;
+  let { text, image, createdAt, likes, comments } = req.body;
+  let userID = req.body.userID;
   try {
-    let post = new Post({ user, text, image, createdAt, likes, comments });
+    let post = new Post({ user:userID, text, image, createdAt, likes, comments });
     await post.save();
     res.status(200).send({ Messsage: "Post Added Successfully", Post: post });
   } catch (error) {
