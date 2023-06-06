@@ -122,7 +122,7 @@ userRoute.post("/api/users/:id/friends", auth, async (req, res) => {
       if (targetUser.friendRequests.includes(userId)) {
           return res.status(400).send({ "Message":"Friend request sent allready"})
       }
-      if (user.friendRequests.toString() == id) {
+      if (user.friendRequests.toString() == tagetId) {
           return res.status(400).send("You cannot send friend request to yourself")
       }
     targetUser.friendRequests.push(userId);
